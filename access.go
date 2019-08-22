@@ -38,6 +38,7 @@ type AccessRequest struct {
 	AssertionType   string
 	Assertion       string
 	Link3rd         string
+	Platform        string
 
 	// Set if request is authorized
 	Authorized bool
@@ -556,6 +557,7 @@ func (s *Server) handleAssertionRequest(w *Response, r *http.Request) *AccessReq
 		AssertionType:   r.Form.Get("assertion_type"),
 		Assertion:       r.Form.Get("assertion"),
 		Link3rd:         r.Form.Get("link3rd"),
+		Platform:        r.Form.Get("platform"),
 		Password:        r.Form.Get("password"),
 		GenerateRefresh: false, // assertion should NOT generate a refresh token, per the RFC
 		Expiration:      s.Config.AccessExpiration,
@@ -588,6 +590,7 @@ func (s *Server) handleAssertionRequestNoAuth(w *Response, r *http.Request) *Acc
 		AssertionType:   r.Form.Get("assertion_type"),
 		Assertion:       r.Form.Get("assertion"),
 		Link3rd:         r.Form.Get("link3rd"),
+		Platform:        r.Form.Get("platform"),
 		Password:        r.Form.Get("password"),
 		GenerateRefresh: false, // assertion should NOT generate a refresh token, per the RFC
 		Expiration:      s.Config.AccessExpiration,
