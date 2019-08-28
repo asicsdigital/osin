@@ -559,7 +559,7 @@ func (s *Server) handleAssertionRequest(w *Response, r *http.Request) *AccessReq
 		Assertion:       r.Form.Get("assertion"),
 		Link3rd:         r.Form.Get("link3rd"),
 		Platform:        r.Form.Get("platform"),
-		DebugBuild:        r.Form.Get("debug_build"),
+		DebugBuild:      r.Form.Get("debug_build"),
 		Password:        r.Form.Get("password"),
 		GenerateRefresh: false, // assertion should NOT generate a refresh token, per the RFC
 		Expiration:      s.Config.AccessExpiration,
