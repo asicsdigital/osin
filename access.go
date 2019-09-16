@@ -676,6 +676,8 @@ func (s *Server) FinishAccessRequest(w *Response, r *http.Request, ar *AccessReq
 		w.Output["access_token"] = ret.AccessToken
 		w.Output["token_type"] = s.Config.TokenType
 		w.Output["expires_in"] = ret.ExpiresIn
+		w.Output["expires_at"] = ret.CreatedAt.Add(time.Second * time.Duration(ret.ExpiresIn))
+
 		if ret.RefreshToken != "" {
 			w.Output["refresh_token"] = ret.RefreshToken
 		}
